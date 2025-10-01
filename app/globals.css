@@ -1,7 +1,6 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@variant dark (&:is(.dark *));
 
 :root {
   --background: oklch(0.98 0.01 320);
@@ -225,38 +224,39 @@
   }
 }
 
+/* Animation classes for production builds */
 .animate-float {
-  animation: float 3s ease-in-out infinite;
+  animation: float 3s ease-in-out infinite !important;
 }
 
 .animate-float-slow {
-  animation: float-slow 4s ease-in-out infinite;
+  animation: float-slow 4s ease-in-out infinite !important;
 }
 
 .animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
+  animation: pulse-glow 2s ease-in-out infinite !important;
 }
 
 .animate-bounce-in {
-  animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
 }
 
 .animate-slide-in-left {
-  animation: slide-in-left 0.8s ease-out;
+  animation: slide-in-left 0.8s ease-out !important;
 }
 
 .animate-slide-in-right {
-  animation: slide-in-right 0.8s ease-out;
+  animation: slide-in-right 0.8s ease-out !important;
 }
 
 .animate-rotate-slow {
-  animation: rotate-slow 20s linear infinite;
+  animation: rotate-slow 20s linear infinite !important;
 }
 
 .animate-shimmer {
-  animation: shimmer 3s linear infinite;
+  animation: shimmer 3s linear infinite !important;
 }
 
 .animate-heart-beat {
-  animation: heart-beat 1.5s ease-in-out infinite;
+  animation: heart-beat 1.5s ease-in-out infinite !important;
 }

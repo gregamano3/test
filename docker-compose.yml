@@ -1,13 +1,9 @@
 version: '3.8'
 
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  testdns:
+    build: .
     ports:
-      - "9031:3000"
+      - "9012:9012"
     environment:
       - NODE_ENV=production
-    restart: unless-stopped
-    container_name: nextjs-app

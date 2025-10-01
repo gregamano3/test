@@ -3,15 +3,15 @@ FROM node:18-alpine
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
+RUN npm ci --only=production
 
 COPY . .
-
 RUN npm run build
 
-EXPOSE 3000
+# Install serve to serve static files
+RUN npm install -g serve
 
-ENV HOSTNAME=0.0.0.0
-ENV PORT=3000
+EXPOSE 9012
 
-CMD ["node", ".next/standalone/server.js"]
+# Serve the static files from the out directory
+CMD ["serve", "-s", "out", "-l", "9012"]
