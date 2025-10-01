@@ -1,10 +1,10 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { FloatingHearts } from "@/components/floating-hearts"
 import { ParticleBackground } from "@/components/particle-background"
-import { AnimatedText } from "@/components/animated-text"
 import { InteractiveCard } from "@/components/interactive-card"
+import { ChristmasCountdown } from "@/components/christmas-countdown"
+import { ChristmasMusicPlayer } from "@/components/christmas-music-player"
 
 export default function Home() {
   const [mounted, setMounted] = useState(false)
@@ -22,17 +22,14 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-gradient-to-br from-pink-100 via-blue-50 to-purple-100">
+    <main className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-100">
       {/* Particle Background */}
       <ParticleBackground />
-
-      {/* Floating Hearts */}
-      <FloatingHearts />
 
       {/* Mouse Follower */}
       {mounted && (
         <div
-          className="pointer-events-none fixed z-50 h-8 w-8 rounded-full bg-primary/20 blur-xl transition-all duration-300"
+          className="pointer-events-none fixed z-50 h-8 w-8 rounded-full bg-blue-500/20 blur-xl transition-all duration-300"
           style={{
             left: mousePosition.x - 16,
             top: mousePosition.y - 16,
@@ -42,39 +39,101 @@ export default function Home() {
 
       {/* Main Content */}
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-12">
-        {/* Animated Main Text */}
-        <div className="mb-12 text-center">
-          <AnimatedText />
-        </div>
-
-        {/* Interactive Cards Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl w-full">
-          <InteractiveCard title="Forever" emoji="💕" delay={0} color="from-pink-400 to-rose-400" />
-          <InteractiveCard title="Together" emoji="🌟" delay={0.2} color="from-blue-400 to-cyan-400" />
-          <InteractiveCard title="Always" emoji="✨" delay={0.4} color="from-purple-400 to-pink-400" />
-        </div>
-
-        {/* Floating Message */}
-        <div className="mt-16 animate-float-slow">
-          <div className="rounded-3xl bg-white/80 backdrop-blur-sm px-8 py-6 shadow-2xl border-4 border-primary/20">
-            <p className="text-2xl font-bold text-primary text-center">{"Every moment with you is magical ✨"}</p>
+        {/* Header Section */}
+        <div className="mb-16 text-center">
+          <div className="relative">
+            {/* Background Glow */}
+            <div className="absolute inset-0 animate-pulse-glow blur-3xl bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-20" />
+            
+            {/* Main Title */}
+            <h1 className="relative text-6xl sm:text-8xl lg:text-9xl font-black text-balance mb-4">
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent animate-shimmer bg-[length:200%_100%]">
+                VMIS
+              </span>
+            </h1>
+            
+            {/* Subtitle */}
+            <p className="text-2xl sm:text-3xl font-semibold text-gray-700 mb-2">
+              IT Department
+            </p>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
+              Programming & Hardware Solutions
+            </p>
           </div>
         </div>
 
+        {/* Projects Section */}
+        <div className="mb-16 w-full max-w-6xl">
+          <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
+            Our Projects
+          </h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <InteractiveCard 
+              title="HRMS" 
+              emoji="👥" 
+              delay={0} 
+              color="from-blue-400 to-cyan-400" 
+            />
+            <InteractiveCard 
+              title="Inventory" 
+              emoji="📦" 
+              delay={0.1} 
+              color="from-green-400 to-emerald-400" 
+            />
+            <InteractiveCard 
+              title="Power Monitoring" 
+              emoji="⚡" 
+              delay={0.2} 
+              color="from-yellow-400 to-orange-400" 
+            />
+            <InteractiveCard 
+              title="POS System" 
+              emoji="💳" 
+              delay={0.3} 
+              color="from-purple-400 to-pink-400" 
+            />
+          </div>
+        </div>
+
+        {/* Nextcloud Section */}
+        <div className="mb-16 animate-float-slow">
+          <div className="rounded-3xl bg-white/80 backdrop-blur-sm px-8 py-6 shadow-2xl border-4 border-blue-500/20">
+            <div className="text-center">
+              <div className="text-4xl mb-4">☁️</div>
+              <h3 className="text-2xl font-bold text-gray-800 mb-2">Nextcloud Setup</h3>
+              <p className="text-lg text-gray-600">Secure file sharing and collaboration platform</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Christmas Section */}
+        <div className="mb-16 space-y-8">
+          <ChristmasCountdown />
+          <ChristmasMusicPlayer />
+        </div>
+
         {/* Animated Decorative Elements */}
-        <div className="absolute top-20 left-10 animate-float opacity-30">
-          <div className="h-32 w-32 rounded-full bg-gradient-to-br from-pink-300 to-rose-300 blur-2xl" />
+        <div className="absolute top-20 left-10 animate-float opacity-20">
+          <div className="h-32 w-32 rounded-full bg-gradient-to-br from-blue-300 to-indigo-300 blur-2xl" />
         </div>
-        <div className="absolute bottom-20 right-10 animate-float-slow opacity-30">
-          <div className="h-40 w-40 rounded-full bg-gradient-to-br from-blue-300 to-cyan-300 blur-2xl" />
+        <div className="absolute bottom-20 right-10 animate-float-slow opacity-20">
+          <div className="h-40 w-40 rounded-full bg-gradient-to-br from-purple-300 to-pink-300 blur-2xl" />
         </div>
-        <div className="absolute top-1/2 left-1/4 animate-pulse-glow opacity-20">
-          <div className="h-24 w-24 rounded-full bg-gradient-to-br from-purple-300 to-pink-300 blur-2xl" />
+        <div className="absolute top-1/2 left-1/4 animate-pulse-glow opacity-15">
+          <div className="h-24 w-24 rounded-full bg-gradient-to-br from-cyan-300 to-blue-300 blur-2xl" />
         </div>
       </div>
 
+      {/* Footer */}
+      <footer className="relative z-10 text-center py-8">
+        <div className="text-gray-600">
+          <p>&copy; {new Date().getFullYear()} G - A III</p>
+        </div>
+      </footer>
+
       {/* Bottom Wave Animation */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary/10 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-blue-500/10 to-transparent" />
     </main>
   )
 }
+
