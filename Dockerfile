@@ -2,14 +2,19 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+# Install dependencies (including dev dependencies for build)
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci
 
+# Copy source code and build
 COPY . .
 RUN npm run build
 
-# Install serve to serve static files
+# Install serve globally
 RUN npm install -g serve
+
+# Clean up dev dependencies to reduce image size
+RUN npm prune --production
 
 EXPOSE 9012
 
